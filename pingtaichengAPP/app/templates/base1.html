@@ -1,0 +1,60 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}XR{% endblock %}
+
+{% block head %}
+{{ super() }}
+
+{% endblock %}
+
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<span class="sr-only">Toggle-navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a href="#" class="navbar-brand">平台秤展示系统</a>
+		</div>
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav">
+				<li><a href="{{ url_for('main.index') }}">运行界面</a></li>
+				<li><a href="{{ url_for('report.details') }}">运行报告</a></li>
+		        <li class="dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">工程师界面 <span class="caret"></span></a>
+		          <ul class="dropdown-menu">
+		            <li><a href="{{ url_for('engineer.setpoint') }}">初值设定</a></li>
+		            <li><a href="{{ url_for('engineer.faultreport') }}">故障报告</a></li>
+		            <li><a href="{{ url_for('engineer.operaterecord') }}">操作记录</a></li>
+		            <li><a href="{{ url_for('engineer.history') }}">历史趋势</a></li>
+		          </ul>
+		        </li>
+			</ul>
+
+
+			<!-- <ul class="nav navbar-nav navbar-right">
+
+			</ul> -->
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+	{% for message in get_flashed_messages() %}
+		<div class="alert alert-warning">
+			{{ message }}
+		</div>
+    {% endfor %}
+	{% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% endblock %}

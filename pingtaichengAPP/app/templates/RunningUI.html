@@ -1,0 +1,80 @@
+{% extends "base1.html" %}
+{% block title %}运行界面{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename = 'diagnosis.css')}}">
+<script type=text/javascript src="{{ url_for('static', filename='echarts.common.min.js') }}"></script> 
+{% endblock %}
+{% block navbar_button %}
+<li><a href="{{ url_for('main.setparam') }}">系统初值设置</a></li>
+<li><a href="{{ url_for('main.record') }}">系统运行记录</a></li>
+{% endblock %}
+{% block page_content %}
+<div class="page-header">
+	<h1>平台秤系统运行状态一览</h1>
+</div>
+<div class="row">
+  <div class="col-md-3 col-sm-3 weight">
+    <h2>当前质量：</h2>
+    <p class="text-right "><strong id="weight">10</strong>(kg)</p>
+  </div>
+  <div class="col-md-6 col-sm-6">
+  <div  id="picture5">
+    <table class="table table-bordered">
+      <tr class="tablerow">
+        <td class="1"></td>
+        <td><img src="{{ url_for('static', filename = 'uparrow.png')}}" class="center-block img1"></td>
+        <td class="2"></td>
+      </tr>
+      <tr class="tablerow">
+        <td><img src="{{ url_for('static', filename = 'rightarrow.png')}}" class="center-block img4"></td>
+        <td></td>
+        <td><img src="{{ url_for('static', filename = 'leftarrow.png')}}" class="center-block img2"></td>
+      </tr>
+      <tr class="tablerow">
+        <td class="3"></td>
+        <td><img src="{{ url_for('static', filename = 'downarrow.png')}}" class="center-block img3"></td>
+        <td class="4"></td>
+      </tr>
+    </table>
+  </div>
+  </div>
+  <div class="col-md-3 col-sm-3" style="min-height: 300px;">
+  <h3>总运行时长：</h3>
+    <p class="text-right "><strong id="runtime">10</strong></p>
+  <h3>正常运行时长：</h3>
+    <p class="text-right "><strong id="normal">10</strong></p>
+  <h3>预警时长：</h3>
+    <p class="text-right"><strong id="alarm">10</strong></p>
+  <h3>故障时长：</h3>
+    <p class="text-right"><strong id="fault">10</strong></p>
+  </div>
+  <div class="col-md-3 col-sm-3 KPI">
+  	<h3 class="inline">传感器1示数</h3>
+    <button class="light" data-toggle="popover" data-trigger="hover" title="故障信息" data-content="" data-placement="top" data-html="True"></button>
+  	<p class="text-right clear"><strong id="Tag1">10</strong>(kg)</p>
+  </div>
+  <div class="col-md-3 col-sm-3 KPI">
+  	<h3 class="inline">传感器2示数</h3>
+    <button class="light" data-toggle="popover" data-trigger="hover" title="故障信息" data-content="" data-placement="top" data-html="True"></button>
+  	<p class="text-right"><strong id="Tag2">10</strong>(kg)</p>
+  </div>
+  <div class="col-md-3 col-sm-3 KPI">
+  	<h3 class="inline">传感器3示数</h3>
+    <button class="light" data-toggle="popover" data-trigger="hover" title="故障信息" data-content="" data-placement="top" data-html="True"></button>
+  	<p class="text-right"><strong id="Tag3">10</strong>(kg)</p>
+  </div>
+  <div class="col-md-3 col-sm-3 KPI">
+  	<h3 class="inline">传感器4示数</h3>
+    <button class="light" data-toggle="popover" data-trigger="hover" title="故障信息" data-content="" data-placement="top" data-html="True"></button>
+  	<p class="text-right"><strong id="Tag4">10</strong>(kg)</p>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+
+<script type=text/javascript src="{{ url_for('static', filename='RunningUI.js') }}"></script> 
+{% endblock %}
